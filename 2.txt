@@ -1,0 +1,144 @@
+RubyRepo - soft do replikacji baz danych
+Rake - build nawet do projektow Javowych
+
+1. Zmienne i podstawowe obiekty
+
+a = 1 # 
+b = 1.2 #
+c = 12398714918749814093184732049832732098532987432742374293 # duzy int, przechowywany normalnie
+
+a.to_s # wynik operacji jest stringiem
+b.to_i # wynik operacji jest intem
+
+a.class # Fixnum
+b.class # Float
+
+a.is_a?(className)
+b.is_a?(Float)
+a.class.superclass.superclass....
+
+class NilClass
+  def ssij
+    puts ssij
+  end
+end
+
+nil.ssij # ssij => nil
+
+false oraz obiekt pusty to nieprawda
+wszytko inne -> prawda	
+
+metody z "?" powinny zwracac true/false
+metody z "!" powinny byc metodami inwazyjnymi (zmieniaja sam obiekt, na ktorym zostal wywolany)
+
+hash = {:key1 => :value1, "key2" => val2}
+
+konwencje accessorow
+o.lenght 	#getter
+o.length= 	#setter
+
+*CHYBA* jezeli w klasie jest metoda o nazwie takiej jak zmienna to zostanie wywolana metoda???
+
+def napisz_cos(napis = "argument domyslny)
+  puts napis + "\n Elo Elo!"
+end
+
+
+
+petle w RUBY:
+each przekazuje do bloku element na ktorym aktualnie operuje
+1.upto(5) {}  # zwraca pierwszy element z zakresu
+w pipe'ach zamykamy zmienne, ktore sa dostepne wewnatrz bloku, np:
+
+1.upto(5) { |p| puts p}
+
+# rownowazne:
+
+1.upto(5) do |i|
+  puts "ble" + i.to_s
+end
+
+alfabet = ["a", "b", "c", "d", "e", "f"]
+
+alfabet.each { |elt| puts elt }
+
+hash = { "foo" => "bar", true => false, 0 =>100}
+
+hash.each {|p| puts p}
+0
+100
+true
+false
+foo
+bar
+=> {0=>100, true=>false, "foo"=>"bar"}
+
+hash.each {|p| puts p.inspect}
+[0, 100]
+[true, false]
+["foo", "bar"]
+=> {0=>100, true=>false, "foo"=>"bar"}
+
+# dwa argumenty w pipe'ie
+hash.each {|k, v| puts "Klucz: " + k.to_s + "\nVal: " + v.to_s }
+Klucz: 0
+Val: 100
+Klucz: true
+Val: false
+Klucz: foo
+Val: bar
+=> {0=>100, true=>false, "foo"=>"bar"}
+
+
+Łancuchy i symbole:
+" " # tutaj mozna uzywac interpolacji #{wyrazenie}, wypisywane jest wyrazenie.to_s
+' ' 
+
+w javie string builder!
+
+Symbole:
+:nazwa_sumbolu # ma tylko jedna reprezentacje w interpreterze i nie tworzy calej puli stringow 
+
+jakis_obiekt.send(:nazwa_metody) # wywolanie takie jak jakis_obiekt.nazwa_metody
+
+jakis_obiekt.send("nazwa_metody".to_sym)
+
+jakis_obiekt.respond_to?(:nazwa_metody) # sprawdzam czy obiekt odpowiada na sygnal nazwa_metody
+
+arnosc:
+a.method(:to_i).arity # zwraca liczbe argumentow dla danej funkcji
+warto poczytac w dokumentacji (zmienna liczba argumentow np.)
+
+Sygnaly - na dobra sprawe nie wywolujemy dla obiektu jakiejs metody, tylko wysylamy do niej sygnal odpowiedni
+
+Aliasowanie metod
+w ciele klasy cos w stylu:
+alias :stara_metoda => :nowa_metoda
+(albo odwrotnie)
+
+self:
+slowo kluczowe dobierajace sie do aktualnej instacji
+
+class Piosenka
+  def graj
+    self.zagraj
+  end
+  
+  # metoda klasowa
+  def self.niegraj
+    # metoda dostepna jakos Piosenka.niegraj
+  end
+end
+
+Dziedziczenie:
+jedno dziedziczenie
+implementowanie funkcjonalnosci w roznych klasach - moduly, mozna je includowac w dowolnej klasie
+miksiny..
+
+Duck-typing
+
+Dynamicznosc:
+mozliwosc zmiany dowolnej metody dowolnej klasy w trakcie trwania programu
+Monkeypathing! (w skrocie: trzeba uwazac!)
+
+

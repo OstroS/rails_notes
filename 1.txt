@@ -1,0 +1,34 @@
+haslo do wifi: BwWsWF-PW
+
+37signals
+
+katalogi: app - tylko klasy programu
+public - img, css, js
+vendor - plugins, additions, extensions
+
+akcja: "najmniejsza porcja dzialalnosci aplikacji webowej" ;)
+
+jesli nie definiujemy akcji to routing kieruja ja do akcji index
+
+Martin Fowler - javaguru od patternsow
+
+ActiveRecord:
+
+	robiac a = Art.find(...)
+	dostajemy od razu a.id, a.title, .title=, etc.
+
+w srodowisku dev nie ma cache'owania i innych utrudniaczy
+test - baza do automatycznych testow, nie zostaja przechowane
+komunikaty o bledach inaczej wygladaja na developerskim srodowisku
+
+po stworzeniu app -> rake db:create 
+tworzy sie baza danych dla srodowiska development zgodna z plikiem config/database.yml
+rake zbior typowych zadan do wykonania
+
+tworzymy model najpierw script/generate model Task
+potem edytujemy migracje
+db:migrate
+
+	
+Model Task -> coc: tabela tasks -> TasksController
+	
